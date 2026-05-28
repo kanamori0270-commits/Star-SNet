@@ -3,7 +3,7 @@ import { useState, useRef } from "react";
 const defaultData = {
   header: {
     company: "STAR CO., LTD. PRESENTS",
-    title: "STAR展示会",
+    title: "STAR展示会　S-Net説明会",
     subtitle: "開催案内",
     season: "2025 SUMMER EXHIBITION",
   },
@@ -19,19 +19,19 @@ const defaultData = {
   ],
   info: {
     date: "7月4日（土）",
-    time: "受付 9:30〜　開会 10:00〜　閉会 16:00",
+    time: "受付 11:30〜　開会 12:00〜　閉会 17:00",
     venue: "三和ボデー",
     venueUrl: "https://maps.app.goo.gl/CPfB6Ewx5KbmoXTP6?g_st=ic",
     party: "18:00〜　従業員参加型",
     partyFee: "参加費 お一人様 7,000円",
   },
   schedule: [
-    { time: "9:30", label: "受付開始", detail: "", gold: true },
-    { time: "10:00", label: "S-Net 事業説明会", detail: "レンタカー事業をされていない事業主様必見！\n1年で200万売上があがった実際の声をお届けします。", url: "https://s-netr.com/", gold: false },
-    { time: "11:00", label: "ツール説明会", detail: "", url: "https://drive.google.com/file/d/1i0VZMgkb2n6ZYjx2Rzy2lyE0grdR_BpT/view?usp=sharing", gold: false },
-    { time: "13:00", label: "製品デモンストレーション", detail: "グルーシステム デモ／ミラクルシステム デモ／新世代のパワーツール デモ", gold: false },
-    { time: "16:00", label: "閉会", detail: "", gold: false },
-    { time: "18:00", label: "親睦会（従業員参加型）", detail: "", gold: true },
+    { time: "11:30", label: "受付開始", detail: "", gold: true },
+    { time: "12:00", label: "S-Net 事業説明会", detail: "レンタカー事業をされていない事業主様必見！\n1年で200万売上があがった実際の声をお届けします。", url: "https://s-netr.com/", gold: false },
+    { time: "13:00", label: "ツール説明会", detail: "こんな商品売ってます。\n便利グッズ　時短グッズ\n変わった商品もたくさんあります。\n見て触って確かめてください", url: "https://drive.google.com/file/d/1i0VZMgkb2n6ZYjx2Rzy2lyE0grdR_BpT/view?usp=sharing", gold: false },
+    { time: "14:00", label: "商品デモンストレーション", detail: "実際に使ってみよう", gold: false },
+    { time: "17:00", label: "閉会", detail: "", gold: false },
+    { time: "18:00", label: "親睦会（従業員参加型）", detail: "高松市内", url: "", gold: true },
   ],
   products: [
     {
@@ -408,7 +408,7 @@ export default function App() {
       {/* PRICE */}
       <div style={{ padding: "36px 28px", background: s.light }}>
         <div style={{ fontSize: 11, letterSpacing: 4, color: s.gray, fontFamily: "'Bebas Neue', sans-serif", marginBottom: 20, borderLeft: `3px solid ${s.red}`, paddingLeft: 10 }}>
-          参加費（お弁当込み）
+          参加費
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 12 }}>
           {[
@@ -421,7 +421,7 @@ export default function App() {
                 <E value={data.prices[key]} onChange={v => set(`prices.${key}`, v)} />
                 <small style={{ fontSize: 13, fontWeight: 400 }}>円</small>
               </div>
-              <div style={{ fontSize: 11, color: s.gray, marginTop: 4 }}>お弁当込み</div>
+
             </div>
           ))}
         </div>
@@ -433,7 +433,7 @@ export default function App() {
               <small style={{ fontSize: 13, fontWeight: 400 }}>円</small>
             </div>
           </div>
-          <div style={{ fontSize: 12, color: s.gray }}>お弁当込み</div>
+
         </div>
         <div style={{ fontSize: 12, color: s.gray, lineHeight: 1.7, padding: 12, background: "white", border: "1px solid #eee" }}>
           <E value={data.prices.note} onChange={v => set("prices.note", v)} multiline style={{ width: "100%" }} />
