@@ -23,7 +23,7 @@ const defaultData = {
     venue: "香川テストセンター",
     venueUrl: "https://maps.app.goo.gl/7votBd32vibLhhyn8?g_st=ic",
     party: "18:00〜　従業員参加型",
-    partyFee: "参加費 お一人様 7,000円",
+    partyFee: "参加費 お一人様 6,500円",
   },
   schedule: [
     { time: "11:30", label: "受付開始", detail: "", gold: true },
