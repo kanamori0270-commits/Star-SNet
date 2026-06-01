@@ -20,8 +20,8 @@ const defaultData = {
   info: {
     date: "7月4日（土）",
     time: "受付 11:30〜　開会 12:00〜　閉会 17:00",
-    venue: "三和ボデー",
-    venueUrl: "https://maps.app.goo.gl/CPfB6Ewx5KbmoXTP6?g_st=ic",
+    venue: "香川テストセンター",
+    venueUrl: "https://maps.app.goo.gl/7votBd32vibLhhyn8?g_st=ic",
     party: "18:00〜　従業員参加型",
     partyFee: "参加費 お一人様 7,000円",
   },
@@ -31,7 +31,7 @@ const defaultData = {
     { time: "13:00", label: "ツール説明会", detail: "こんな商品売ってます。\n便利グッズ　時短グッズ\n変わった商品もたくさんあります。\n見て触って確かめてください", url: "https://drive.google.com/file/d/1i0VZMgkb2n6ZYjx2Rzy2lyE0grdR_BpT/view?usp=sharing", gold: false },
     { time: "14:00", label: "商品デモンストレーション", detail: "実際に使ってみよう", gold: false },
     { time: "17:00", label: "閉会", detail: "", gold: false },
-    { time: "18:00", label: "親睦会（従業員参加型）", detail: "高松市内", url: "", gold: true },
+    { time: "18:00", label: "親睦会（従業員参加型）", detail: "魚男　2時間飲み放題 6,500円", url: "https://map.yahoo.co.jp/v3/place/Gg-CJpT0ZBo?fr=sydd_p-grmspot-rsv-header_gs-ttl&from_srv=search_web", gold: true },
   ],
   products: [
     {
@@ -320,7 +320,15 @@ export default function App() {
         <div style={{ display: "grid", gap: 1, background: "#ddd", border: "1px solid #ddd" }}>
           {[
             { key: "日時", val: <><strong style={{ fontSize: 16 }}><E value={data.info.date} onChange={v => set("info.date", v)} /></strong><br /><E value={data.info.time} onChange={v => set("info.time", v)} /></> },
-            { key: "会場", val: <strong style={{ fontSize: 16 }}><U value={data.info.venueUrl} onChange={v => set("info.venueUrl", v)} label={<E value={data.info.venue} onChange={v => set("info.venue", v)} />} /></strong> },
+            { key: "会場", val: (
+              <div>
+                <strong style={{ fontSize: 16 }}>{data.info.venue}</strong><br/>
+                {data.info.venueUrl && !editMode && (
+                  <a href={data.info.venueUrl} target="_blank" rel="noreferrer" style={{ display: "inline-block", marginTop: 6, background: s.gold, color: "#000", fontSize: 12, fontWeight: 700, padding: "4px 14px", borderRadius: 3, textDecoration: "none" }}>📍 地図を見る</a>
+                )}
+                {editMode && <U value={data.info.venueUrl} onChange={v => set("info.venueUrl", v)} label={<E value={data.info.venue} onChange={v => set("info.venue", v)} />} />}
+              </div>
+            ) },
             { key: "親睦会", val: <><E value={data.info.party} onChange={v => set("info.party", v)} /><br /><span style={{ color: s.gray, fontSize: 12 }}><E value={data.info.partyFee} onChange={v => set("info.partyFee", v)} /></span></> },
           ].map(({ key, val }) => (
             <div key={key} style={{ display: "grid", gridTemplateColumns: "110px 1fr", background: "white" }}>
